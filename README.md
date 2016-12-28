@@ -30,7 +30,7 @@ docker_service_enabled: yes
 Version of docker-compose to be installed.
 
 ``` yaml
-docker_compose_version: 1.8.1
+docker_compose_version: 1.9.0
 ```
 
 Dependencies
