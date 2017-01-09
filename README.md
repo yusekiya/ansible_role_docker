@@ -9,7 +9,6 @@ This role includes following tasks.
 - Start docker and enable/disable it (tags: always)
 - Create docker group (tags: optional)
 - Configure DNS server for docker (tags: optional)
-- Install docker-compose (tags: docker_compose)
 
 All the tasks need root privilege.
 
@@ -25,12 +24,6 @@ Whether to start docker on boot (yes/no).
 
 ``` yaml
 docker_service_enabled: yes
-```
-
-Version of docker-compose to be installed.
-
-``` yaml
-docker_compose_version: 1.9.0
 ```
 
 Dependencies
