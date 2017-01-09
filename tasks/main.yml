@@ -19,6 +19,7 @@
 - name: Add apt repository
   apt_repository:
     repo: 'deb https://apt.dockerproject.org/repo {{ ansible_lsb.id | lower }}-{{ ansible_distribution_release }} main'
+    filename: 'docker'
     update_cache: yes
   tags:
     - always
