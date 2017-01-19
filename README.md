@@ -8,7 +8,6 @@ This role includes following tasks.
 - Install recommended packages (tags: recommended)
 - Start docker and enable/disable it (tags: always)
 - Create docker group (tags: optional)
-- Configure DNS server for docker (tags: optional)
 
 All the tasks need root privilege.
 

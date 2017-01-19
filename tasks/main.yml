@@ -59,13 +59,3 @@
     name: docker
   tags:
     - optional
-
-- name: Configure DNS server for docker
-  lineinfile:
-    state: present
-    dest: /etc/default/docker
-    regexp: '^#?DOCKER_OPTS'
-    line: 'DOCKER_OPTS="--dns 8.8.8.8"'
-  notify: Restart docker
-  tags:
-    - optional
