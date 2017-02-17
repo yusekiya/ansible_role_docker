@@ -2,7 +2,7 @@
 docker_required_packages:
   - apt-transport-https
   - ca-certificates
-  - gnupg2
+  - software-properties-common
 
 docker_repository:
   keyid: '58118E89F3A912897C070ADBF76221572C52609D'
