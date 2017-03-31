@@ -4,6 +4,4 @@ docker_required_packages:
   - ca-certificates
   - software-properties-common
 
-docker_recommended_packages:
-  - 'linux-image-extra-{{ansible_kernel}}'
-  - linux-image-extra-virtual
+docker_recommended_packages: []

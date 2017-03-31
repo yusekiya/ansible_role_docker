@@ -1,7 +1,7 @@
 Ansible role: docker-ce
 =========
 
-Install docker-ce on Ubuntu (14.04 through 16.04), Debian 8.0, or Raspbian 8.0.
+Install docker-ce on Ubuntu 16.04, Debian 8.0, or Raspbian 8.0.
 This role includes following tasks.
 
 - Install docker and its requirements through apt (tags: always)
