@@ -53,8 +53,8 @@
   apt:
     name: '{{item}}'
     state: present
+    update_cache: yes
   with_items: '{{docker_recommended_packages}}'
-  update_cache: yes
   tags:
     - recommended
 
