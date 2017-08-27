@@ -1,13 +1,18 @@
 ---
 - include_vars: '{{ansible_distribution}}.yml'
 
-- name: Remove old package
+- name: Remove old package | docker
   apt:
-    name: '{{item}}'
+    name: docker
     state: absent
-  with_items:
-    - docker
-    - docker-engine
+  tags:
+    - always
+
+- name: Remove old package | docker-engine
+  apt:
+    name: docker-engine
+    state: absent
+  when: ansible_lsb.id != 'Raspbian'
   tags:
     - always
 
@@ -26,17 +31,21 @@
   tags:
     - always
 
-- name: Add apt repository
+- name: Add apt repository | except Raspbian
   apt_repository:
     repo: 'deb [arch={% if ansible_architecture == "x86_64" %}amd64{% elif ansible_architecture == "armv7l" or ansible_architecture == "armv6l" %}armhf{%  endif %}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable'
     filename: 'docker'
     update_cache: yes
+  when: ansible_lsb.id != 'Raspbian'
   tags:
     - always
 
-- name: Update cache
-  apt:
+- name: Add apt repository | for Raspbian
+  apt_repository:
+    repo: 'deb [arch=armhf] https://apt.dockerproject.org/repo raspbian-jessie main'
+    filename: 'docker'
     update_cache: yes
+  when: ansible_lsb.id == 'Raspbian'
   tags:
     - always
 
@@ -45,12 +54,13 @@
     name: '{{item}}'
     state: present
   with_items: '{{docker_recommended_packages}}'
+  update_cache: yes
   tags:
     - recommended
 
 - name: Install docker
   apt:
-    name: docker-ce
+    name: 'docker-{% if ansible_lsb.id == "Raspbian" %}engine{% else %}ce'
     state: latest
     update_cache: yes
   tags:
