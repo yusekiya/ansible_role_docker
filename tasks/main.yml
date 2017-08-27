@@ -28,7 +28,7 @@
 
 - name: Add apt repository
   apt_repository:
-    repo: 'deb [arch={% if ansible_architecture == "x86_64" %}amd64{% elif ansible_architecture == "armv7l" %}armhf{%  endif%}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable'
+    repo: 'deb [arch={% if ansible_architecture == "x86_64" %}amd64{% elif ansible_architecture == "armv7l" or ansible_architecture == "armv6l" %}armhf{%  endif %}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable'
     filename: 'docker'
     update_cache: yes
   tags:
