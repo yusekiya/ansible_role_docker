@@ -60,7 +60,7 @@
 
 - name: Install docker
   apt:
-    name: 'docker-{% if ansible_lsb.id == "Raspbian" %}engine{% else %}ce'
+    name: 'docker-{% if ansible_lsb.id == "Raspbian" %}engine{% else %}ce{% endif %}'
     state: latest
     update_cache: yes
   tags:
