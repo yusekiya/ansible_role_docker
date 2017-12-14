@@ -2,6 +2,7 @@
 docker_required_packages:
   - apt-transport-https
   - ca-certificates
+  - gnupg2
   - software-properties-common
 
 docker_recommended_packages: []
